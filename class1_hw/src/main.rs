@@ -1,3 +1,5 @@
+use std::io;
+
 fn class1_hw1() {
     
     let org_arr = [1, 2,3,5,6,8, 10, 11];
@@ -31,7 +33,24 @@ fn class1_hw1() {
 }
 
 fn class1_hw2() {
-    println!("Hello, home work 2");
+    
+    let str = "This is a regular paragraph with the default style of Normal. This is a regular paragraph with the default style of Normal. This is a regular paragraph with the default style of Normal. This is a regular paragraph with the default style of Normal. This is a regular paragraph with the default style of Normal.";
+
+    println!("Please input your word.");
+
+    let mut word = String::new();
+
+    io::stdin()
+        .read_line(&mut word)
+        .expect("Failed to read line");
+    word.pop();
+    word.pop();
+    
+    let word_count = str.matches(&word).count();
+
+    println!("You guessed: {}. we found {} times", word, word_count);
+
+    
 }
 
 fn main() {
