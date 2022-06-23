@@ -2,13 +2,14 @@ use std::collections::HashMap;
 
 fn main() {
     let mut school = School::new();
-    school.add(2, "Lee");
-    school.add(3, "Nancy");
-    school.add(4, "Bob");
-    school.add(4, "Alice");
-    school.add(5, "Tom");
+    school.add(2, "Yamamoto");
+    school.add(3, "KanaIe");
+    school.add(5, "Suzuki");
+    school.add(4, "Takahashi");
+    school.add(5, "Yamada");
+    school.add(5, "Sumimoto");
 
-    let list_student_same_grade = school.grade(4);
+    let list_student_same_grade = school.grade(5);
     println!("{:?}", list_student_same_grade);
 }
 

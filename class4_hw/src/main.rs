@@ -107,12 +107,36 @@
 // Bài 2: Lifetime
 // Yêu cầu: Sửa lỗi Lifetime 
 
-use std::fmt;
-struct StrDisplayable<'a>(Vec<&'a str>);
+ use std::fmt;
+// struct StrDisplayable<'a>(Vec<&'a str>);
 
-impl<'a> fmt::Display for StrDisplayable<'a> {
-    fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
-        for v in &self.0 {
+// impl<'a> fmt::Display for StrDisplayable<'a> {
+//     fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
+//         for v in &self.0 {
+//             write!(f, "\n{}", v)?;
+//         }
+//         Ok(())
+//     }
+// }
+
+// fn main() {
+//         let vec: Vec<&str> = vec!["a","bc","def"];
+//         let vec_Foo = StrDisplayable(vec);
+//         println!("{}",vec_Foo);
+// }
+
+
+//Bai Tap 2 without lifetime
+struct Student {
+    name: String,
+    age: u32,
+    class:Vec<String>,
+}
+
+impl fmt::Display for Student{
+    fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result{
+        write!(f, "\n{}\n{}", self.name, self.age)?;
+        for v in &self.class {
             write!(f, "\n{}", v)?;
         }
         Ok(())
@@ -120,7 +144,7 @@ impl<'a> fmt::Display for StrDisplayable<'a> {
 }
 
 fn main() {
-        let vec: Vec<&str> = vec!["a","bc","def"];
-        let vec_Foo = StrDisplayable(vec);
-        println!("{}",vec_Foo);
+        let vec: Vec<String> = vec!["a".to_string(),"bc".to_string(),"def".to_string()];
+        let std1 = Student{name:"alibaba".to_string(),age:31,class:vec};
+        println!("{}",std1);
 }
